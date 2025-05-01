@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, LogOut, Truck, MapPin, Fuel, Users, Settings, BarChart, Box } from 'lucide-react';
+import { Menu, LogOut, Truck, MapPin, Fuel, Users, Settings, BarChart, Box, FileText, DollarSign, AlertTriangle } from 'lucide-react';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -10,17 +10,18 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
   const menuItems = [
     { icon: BarChart, label: 'Dashboard', href: '#dashboard' },
-    { icon: Truck, label: 'Vehicles', href: '#vehicles' },
-    { icon: Users, label: 'Drivers', href: '#drivers' },
-    { icon: MapPin, label: 'Routes', href: '#routes' },
-    { icon: Fuel, label: 'Fuel', href: '#fuel' },
-    { icon: Box, label: 'Resources', href: '#resources' },
-    { icon: Settings, label: 'Settings', href: '#settings' },
+    { icon: FileText, label: 'Órdenes', href: '#orders' },
+    { icon: Truck, label: 'Vehículos', href: '#vehicles' },
+    { icon: Users, label: 'Operadores', href: '#operators' },
+    { icon: MapPin, label: 'Rutas', href: '#routes' },
+    { icon: DollarSign, label: 'Gastos', href: '#expenses' },
+    { icon: AlertTriangle, label: 'Incidentes', href: '#incidents' },
+    { icon: Box, label: 'Recursos', href: '#resources' },
+    { icon: Settings, label: 'Configuración', href: '#settings' },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Mobile menu button */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-gray-800 text-white"
@@ -28,7 +29,6 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         <Menu size={20} />
       </button>
 
-      {/* Sidebar */}
       <aside
         className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform duration-300 ease-in-out ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
@@ -40,8 +40,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
               <Truck className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white">TransportPro</h1>
-              <p className="text-xs text-gray-400">Fleet Management Solution</p>
+              <h1 className="text-xl font-bold text-white">TransportePro</h1>
+              <p className="text-xs text-gray-400">Sistema de Gestión</p>
             </div>
           </div>
 
@@ -60,21 +60,20 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
           <div className="absolute bottom-0 left-0 w-full p-4">
             <div className="p-4 rounded-lg bg-gray-700/50 mb-4">
-              <p className="text-sm text-gray-300 mb-1">Pro Plan</p>
+              <p className="text-sm text-gray-300 mb-1">Plan Empresarial</p>
               <div className="h-1.5 w-full bg-gray-600 rounded-full">
                 <div className="h-1.5 w-3/4 bg-primary rounded-full"></div>
               </div>
-              <p className="text-xs text-gray-400 mt-1">75% of monthly usage</p>
+              <p className="text-xs text-gray-400 mt-1">75% del uso mensual</p>
             </div>
             <button className="flex items-center w-full px-2 py-3 text-gray-300 rounded-lg hover:bg-red-500/10 hover:text-red-500 transition-colors">
               <LogOut className="w-5 h-5 mr-3" />
-              <span className="font-medium">Logout</span>
+              <span className="font-medium">Cerrar Sesión</span>
             </button>
           </div>
         </div>
       </aside>
 
-      {/* Main content */}
       <div className={`p-4 ${sidebarOpen ? 'lg:ml-64' : ''} transition-all duration-300`}>
         <div className="p-6 rounded-xl bg-white shadow-sm min-h-[calc(100vh-2rem)] animate-fade-in">
           {children}
