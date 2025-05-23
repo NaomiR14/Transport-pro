@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+           xmlns:local="clr-namespace:Transport_pro"
+           x:Class="Transport_pro.MainPage"  
+           FlyoutLayoutBehavior="Split">  
+
+   <!-- Left-side navigation menu -->  
+   <FlyoutPage.Flyout>  
+        <ContentPage Title="Menu"  
+                    BackgroundColor="#2E3B4E"  
+                    Padding="10">  
+            <VerticalStackLayout>  
+                <Button Text="Dashboard"   
+                        ImageSource="dashboard_icon.png"   
+                        Clicked="OnDashboardClicked"   
+                        HorizontalOptions="Start" />  
+                <Button Text="Orders"   
+                        ImageSource="orders_icon.png"
+                        HorizontalOptions="Start" />  
+                <Button Text="Vehicles"   
+                        ImageSource="vehicles_icon.png" 
+                        HorizontalOptions="Start" />  
+                <Button Text="Operators"   
+                        ImageSource="operators_icon.png"
+                        HorizontalOptions="Start" />  
+                <Button Text="Routes"   
+                        ImageSource="routes_icon.png"
+                        HorizontalOptions="Start" />  
+                <Button Text="Expenses"   
+                        ImageSource="expenses_icon.png" 
+                        HorizontalOptions="Start" />  
+                <Button Text="Incidents"   
+                        ImageSource="incidents_icon.png"
+                        HorizontalOptions="Start" />  
+                <Button Text="Resources"   
+                        ImageSource="resources_icon.png"
+                        HorizontalOptions="Start" />  
+                <Button Text="Settings"   
+                        ImageSource="settings_icon.png"
+                        HorizontalOptions="Start" />  
+            </VerticalStackLayout>  
+        </ContentPage>  
+   </FlyoutPage.Flyout>  
+
+   <!-- Main content area -->  
+   <FlyoutPage.Detail>  
+       <NavigationPage>  
+           <x:Arguments>  
+               <ContentPage Title="Dashboard">  
+                   <VerticalStackLayout Padding="20"
+                                        >  
+                       <SearchBar Placeholder="Search orders..." />  
+                       <Button Text="Add New Order" />
+                        <CollectionView  ItemsSource="{Binding _ordersList}">
+                            <CollectionView.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Order ID" Grid.Column="0" />
+                                    <Label Text="First Name" Grid.Column="1" />
+                                    <Label Text="Last Name" Grid.Column="2" />
+                                    <Label Text="Product" Grid.Column="3" />
+                                    <Label Text="Vehicle" Grid.Column="4" />
+                                    <Label Text="License Plate" Grid.Column="5" />
+                                    <Label Text="Operator" Grid.Column="6" />
+                                    <Label Text="Start Location" Grid.Column="7" />
+                                    <Label Text="End Location" Grid.Column="8" />
+                                    <Label Text="Quantity" Grid.Column="9" />
+                                    <Label Text="Status" Grid.Column="10" />
+                                    <Label Text="Order Date" Grid.Column="11" />
+                                </Grid>
+                            </CollectionView.Header>
+                            <CollectionView.ItemsSource>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding OrderId}" />
+                                    <Label Text="{Binding FirstName}" />
+                                </Grid>
+                            </CollectionView.ItemsSource>
+                        </CollectionView>  
+                   </VerticalStackLayout>  
+               </ContentPage>  
+           </x:Arguments>  
+       </NavigationPage>  
+   </FlyoutPage.Detail>  
+</FlyoutPage>
